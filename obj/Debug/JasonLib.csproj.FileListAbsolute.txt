@@ -1,0 +1,5 @@
+D:\SVN\JasonLib\JasonLib\obj\Debug\JasonLib.csprojResolveAssemblyReference.cache
+D:\SVN\JasonLib\JasonLib\bin\Debug\JasonLib.dll
+D:\SVN\JasonLib\JasonLib\bin\Debug\JasonLib.pdb
+D:\SVN\JasonLib\JasonLib\obj\Debug\JasonLib.dll
+D:\SVN\JasonLib\JasonLib\obj\Debug\JasonLib.pdb
