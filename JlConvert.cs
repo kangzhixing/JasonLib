@@ -7,7 +7,7 @@ namespace JasonLib
 {
     public class JlConvert
     {
-        public static bool TryToBoolean(object obj, bool defaultValue = false)
+        public static bool TryToBool(object obj, bool defaultValue = false)
         {
             bool result;
             return bool.TryParse(obj.ToString(), out result) ? result : defaultValue;
@@ -23,6 +23,42 @@ namespace JasonLib
         {
             int result;
             return int.TryParse(obj.ToString(), out result) ? result : defaultValue;
+        }
+
+        /// <summary>
+        /// 尝试转换（失败则返回默认值） - 转换为byte类型
+        /// </summary>
+        /// <param name="obj">输入</param>
+        /// <param name="defaultValue">默认值</param>
+        /// <returns>返回转换后的byte类型（异常则返回0）</returns>
+        public static byte TryToByte(object obj, byte defaultValue = 0)
+        {
+            byte result;
+            return byte.TryParse(obj.ToString(), out result) ? result : defaultValue;
+        }
+
+        /// <summary>
+        /// 尝试转换（失败则返回默认值） - 转换为long类型
+        /// </summary>
+        /// <param name="obj">输入</param>
+        /// <param name="defaultValue">默认值</param>
+        /// <returns>返回转换后的long类型（异常则返回0）</returns>
+        public static long TryToLong(object obj, long defaultValue = 0)
+        {
+            long result;
+            return long.TryParse(obj.ToString(), out result) ? result : defaultValue;
+        }
+
+        /// <summary>
+        /// 尝试转换（失败则返回默认值） - 转换为short类型
+        /// </summary>
+        /// <param name="obj">输入</param>
+        /// <param name="defaultValue">默认值</param>
+        /// <returns>返回转换后的short类型（异常则返回0）</returns>
+        public static short TryToShort(object obj, short defaultValue = 0)
+        {
+            short result;
+            return short.TryParse(obj.ToString(), out result) ? result : defaultValue;
         }
 
         public static double TryToDouble(object obj, double defaultValue = 0.00)

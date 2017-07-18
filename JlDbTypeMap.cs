@@ -39,27 +39,24 @@
         /// </summary>
         /// <param name="dbType">数据库类型</param>
         /// <returns>.NET类型</returns>
-        public static string Map(string dbType)
+        public static string Map(string dbType, bool isNullable = false)
         {
+            var result = string.Empty;
             switch (dbType)
             {
-                case "bigint":
-                    return "long";
+                case "bigint": result = "long"; break;
                 case "int":
-                case "tinyint":
-                    return "int";
-                case "bit":
-                    return "byte";
+                case "tinyint": result = "int"; break;
+                case "bit": result = "byte"; break;
                 case "smalldatetime":
                 case "date":
-                case "datetime":
-                    return "DateTime";
+                case "datetime": result = "DateTime"; break;
                 case "decimal":
-                case "float":
-                    return "decimal";
-                default:
-                    return "string";
+                case "float": result = "decimal"; break;
+                default: result = "string"; break;
             }
+
+            return isNullable && result != "string" ? result + "?" : result;
         }
     }
 }
