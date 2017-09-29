@@ -23,6 +23,7 @@
                 case "smalldatetime":
                 case "date":
                 case "datetime":
+                case "timestamp":
                     return "Date";
                 case "numeric":
                 case "decimal":
@@ -33,30 +34,69 @@
                     return "String";
             }
         }
+        /// <summary>
+        /// 映射
+        /// </summary>
+        /// <param name="dbType">数据库类型</param>
+        /// <returns>Mybatis JdbcType类型</returns>
+        public static string Map4Mybatis(string dbType)
+        {
+            switch (dbType)
+            {
+                case "bigint":
+                    return "bigint";
+                case "bit":
+                    return "bit";
+                case "int":
+                    return "integer";
+                case "tinyint":
+                    return "tinyint";
+                case "date":
+                    return "date";
+                case "datetime":
+                case "timestamp":
+                    return "timestamp";
+                case "numeric":
+                    return "numeric";
+                case "decimal":
+                    return "decimal";
+                case "float":
+                case "double":
+                    return "double";
+                case "text":
+                case "varchar":
+                    return "varchar";
+                case "nvarchar":
+                    return "nvarchar";
+                default:
+                    return "varchar";
+            }
+        }
 
         /// <summary>
         /// 映射
         /// </summary>
         /// <param name="dbType">数据库类型</param>
         /// <returns>.NET类型</returns>
-        public static string Map(string dbType)
+        public static string Map(string dbType, bool isNullable = false)
         {
             switch (dbType)
             {
                 case "bigint":
-                    return "long";
+                    return isNullable ? "long?" : "long";
                 case "int":
                 case "tinyint":
-                    return "int";
+                    return isNullable ? "int?" : "int";
                 case "bit":
-                    return "byte";
+                    return isNullable ? "byte?" : "byte";
                 case "smalldatetime":
                 case "date":
                 case "datetime":
-                    return "DateTime";
+                case "timestamp":
+                    return isNullable ? "DateTime?" : "DateTime";
                 case "decimal":
                 case "float":
-                    return "decimal";
+                    return isNullable ? "decimal?" : "decimal";
                 default:
                     return "string";
             }

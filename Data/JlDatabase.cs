@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -188,6 +189,9 @@ namespace JasonLib.Data
                     break;
                 case JlDatabaseType.OleDb:
                     instance = OleDbFactory.Instance;
+                    break;
+                case JlDatabaseType.MySql:
+                    instance = MySqlClientFactory.Instance;
                     break;
             }
             return instance;
