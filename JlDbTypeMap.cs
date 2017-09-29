@@ -80,6 +80,7 @@
         /// <returns>.NET类型</returns>
         public static string Map(string dbType, bool isNullable = false)
         {
+            var result = string.Empty;
             switch (dbType)
             {
                 case "bigint":
@@ -100,6 +101,8 @@
                 default:
                     return "string";
             }
+
+            return isNullable && result != "string" ? result + "?" : result;
         }
     }
 }
