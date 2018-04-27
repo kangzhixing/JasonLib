@@ -28,6 +28,11 @@ namespace JasonLib.Data
         /// <summary>
         /// MySql数据库
         /// </summary>
-        MySql = 4
+        MySql = 4,
+
+        /// <summary>
+        /// PostgreSql数据库
+        /// </summary>
+        PostgreSql = 5
     }
 }

@@ -181,7 +181,13 @@ namespace JasonLib.Data
         /// <returns>创建工厂</returns>
         public static DbProviderFactory GetDbProviderFactory(JlDatabaseType databaseType = JlDatabaseType.SqlServer)
         {
-            DbProviderFactory instance = null;
+            //PostgreSql需要config中添加
+            //<system.data >
+            //  <DbProviderFactories >
+            //    <add name = "Npgsql Data Provider" invariant = "Npgsql" description = "Data Provider for PostgreSQL" type = "Npgsql.NpgsqlFactory, Npgsql" />
+            //  </DbProviderFactories >
+            //</system.data >
+                   DbProviderFactory instance = null;
             switch (databaseType)
             {
                 case JlDatabaseType.SqlServer:
@@ -192,6 +198,9 @@ namespace JasonLib.Data
                     break;
                 case JlDatabaseType.MySql:
                     instance = MySqlClientFactory.Instance;
+                    break;
+                case JlDatabaseType.PostgreSql:
+                    instance = DbProviderFactories.GetFactory("Npgsql");
                     break;
             }
             return instance;

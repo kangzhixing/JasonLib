@@ -168,7 +168,7 @@ namespace JasonLib.Data
         /// 根据数据库类型获得某种数据库系列对象创建工厂
         /// </summary>
         /// <returns>创建工厂</returns>
-        public static DbProviderFactory GetDbProviderFactory()
+        private static DbProviderFactory GetDbProviderFactory()
         {
             return MySqlClientFactory.Instance;
         }

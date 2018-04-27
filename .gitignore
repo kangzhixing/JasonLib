@@ -47,3 +47,14 @@ Temporary Items
 .apdisk
 *.dll
 *.pdb
+bin/Debug/System.Web.Helpers.xml
+bin/Debug/System.Web.Helpers.xml
+bin/Debug/System.Web.Mvc.xml
+bin/Debug/System.Web.Razor.xml
+bin/Debug/System.Web.WebPages.Deployment.xml
+bin/Debug/System.Web.WebPages.xml
+bin/Debug/System.Web.WebPages.Razor.xml
+bin/Debug/JasonLib.dll.config
+bin/Debug/NPOI.xml
+app.config
+.vs/JasonLib/v15/.suo
