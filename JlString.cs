@@ -52,6 +52,31 @@
         }
 
         /// <summary>
+        /// 删除字符串中下划线
+        /// </summary>
+        /// <param name="srcStr">原字符串</param>
+        /// <param name="org">删除字符</param>
+        /// <param name="ob">替换字符</param>
+        /// <returns>结果</returns>
+        public static string ReplaceUnderline(string srcStr, string org = "_", string ob = null)
+        {
+            var newString = "";
+            int first = 0;
+            while (srcStr.IndexOf(org) != -1)
+            {
+                first = srcStr.IndexOf(org);
+                if (first != srcStr.Length)
+                {
+                    newString = newString + srcStr.Substring(0, first) + ob;
+                    srcStr = srcStr.Substring(first + org.Length);
+                    srcStr = ToUpperFirst(srcStr);
+                }
+            }
+            newString = newString + srcStr;
+            return newString;
+        }
+
+        /// <summary>
         /// 获取字符串相似度
         /// 定义相似度 = (较长的字符穿的长度-编辑距离) / 较长的字符穿的长度
         /// </summary>

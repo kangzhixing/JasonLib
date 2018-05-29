@@ -1,14 +1,31 @@
-﻿namespace CodeTool.common
+﻿using JasonLib.Data;
+
+namespace CodeTool.common
 {
     public class JlDbTypeMap
     {
+        public static string Map4J(string dbType, bool isNullable = false, JlDatabaseType databaseType = JlDatabaseType.MySql)
+        {
+            switch (databaseType)
+            {
+                case JlDatabaseType.MySql:
+                    return Map4J_Mysql(dbType, isNullable);
+
+                case JlDatabaseType.PostgreSql:
+                    return Map4J_PostgreSql(dbType, isNullable);
+
+                default:
+                    return Map4J_Mysql(dbType, isNullable);
+            }
+
+        }
         /// <summary>
         /// 映射
         /// </summary>
-        /// <param name="dbType">数据库类型</param>
+        /// <param name="dbType">数据类型</param>
         /// <param name="isNullable"></param>
         /// <returns>JAVA类型</returns>
-        public static string Map4J(string dbType, bool isNullable = false)
+        public static string Map4J_Mysql(string dbType, bool isNullable = false)
         {
             switch (dbType)
             {
@@ -29,6 +46,34 @@
                 case "decimal":
                     return "BigDecimal";
                 case "float":
+                    return isNullable ? "Double" : "double";
+                default:
+                    return "String";
+            }
+        }
+        /// <summary>
+        /// 映射
+        /// </summary>
+        /// <param name="dbType">数据库类型</param>
+        /// <param name="isNullable"></param>
+        /// <returns>JAVA类型</returns>
+        public static string Map4J_PostgreSql(string dbType, bool isNullable = false)
+        {
+            switch (dbType)
+            {
+                case "bigint":
+                    return isNullable ? "Long" : "long";
+                case "integer":
+                    return isNullable ? "Integer" : "int";
+                case "boolean":
+                    return isNullable ? "Boolean" : "boolean";
+                case "date":
+                case "timestamp with time zone":
+                case "timestamp without time zone":
+                    return "Date";
+                case "numeric":
+                    return "BigDecimal";
+                case "double precision":
                     return isNullable ? "Double" : "double";
                 default:
                     return "String";
@@ -78,7 +123,7 @@
         /// </summary>
         /// <param name="dbType">数据库类型</param>
         /// <returns>.NET类型</returns>
-        public static string Map(string dbType, bool isNullable = false)
+        public static string Map4CSharp(string dbType, bool isNullable = false)
         {
             var result = string.Empty;
             switch (dbType)
@@ -101,8 +146,6 @@
                 default:
                     return "string";
             }
-
-            return isNullable && result != "string" ? result + "?" : result;
         }
     }
 }
