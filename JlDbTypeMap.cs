@@ -63,6 +63,7 @@ namespace CodeTool.common
             {
                 case "bigint":
                     return isNullable ? "Long" : "long";
+                case "smallint":
                 case "integer":
                     return isNullable ? "Integer" : "int";
                 case "boolean":
@@ -77,6 +78,36 @@ namespace CodeTool.common
                     return isNullable ? "Double" : "double";
                 default:
                     return "String";
+            }
+        }
+        /// <summary>
+        /// 映射
+        /// </summary>
+        /// <param name="dbType">数据库类型</param>
+        /// <param name="isNullable"></param>
+        /// <returns>JAVA类型</returns>
+        public static string Map4Mybatis_PostgreSql(string dbType, bool isNullable = false)
+        {
+            switch (dbType)
+            {
+                case "bigint":
+                    return "BIGINT";
+                case "smallint":
+                    return "SMALLINT";
+                case "integer":
+                    return "INTEGER";
+                case "boolean":
+                    return "BIT";
+                case "date":
+                case "timestamp with time zone":
+                case "timestamp without time zone":
+                    return "TIMESTAMP";
+                case "numeric":
+                    return "NUMERIC";
+                case "double precision":
+                    return "DOUBLE";
+                default:
+                    return "VARCHAR";
             }
         }
         /// <summary>
