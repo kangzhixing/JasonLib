@@ -25,7 +25,7 @@ namespace CodeTool.common
         /// <param name="dbType">数据类型</param>
         /// <param name="isNullable"></param>
         /// <returns>JAVA类型</returns>
-        public static string Map4J_Mysql(string dbType, bool isNullable = false)
+        private static string Map4J_Mysql(string dbType, bool isNullable = false)
         {
             switch (dbType)
             {
@@ -57,7 +57,7 @@ namespace CodeTool.common
         /// <param name="dbType">数据库类型</param>
         /// <param name="isNullable"></param>
         /// <returns>JAVA类型</returns>
-        public static string Map4J_PostgreSql(string dbType, bool isNullable = false)
+        private static string Map4J_PostgreSql(string dbType, bool isNullable = false)
         {
             switch (dbType)
             {

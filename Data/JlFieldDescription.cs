@@ -37,5 +37,17 @@
         /// 字段名
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// 字段名(去除下划线)
+        /// </summary>
+        public string SimpleName
+        {
+            get
+            {
+                return JlString.ReplaceUnderline(Name);
+            }
+            set { }
+        }
     }
 }

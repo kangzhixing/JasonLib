@@ -52,5 +52,7 @@ app.config
 .vs/JasonLib/v15/.suo
 .vs
 packages
-obj
+obj/*
 JasonLib.sln
+*.cache
+obj/Debug/JasonLib.csproj.FileListAbsolute.txt
