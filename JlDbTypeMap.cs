@@ -74,6 +74,8 @@ namespace CodeTool.common
                     return "Date";
                 case "numeric":
                     return "BigDecimal";
+                case "real":
+                    return isNullable ? "Float" : "float";
                 case "double precision":
                     return isNullable ? "Double" : "double";
                 default:
@@ -104,6 +106,8 @@ namespace CodeTool.common
                     return "TIMESTAMP";
                 case "numeric":
                     return "NUMERIC";
+                case "real":
+                    return "FLOAT";
                 case "double precision":
                     return "DOUBLE";
                 default:
